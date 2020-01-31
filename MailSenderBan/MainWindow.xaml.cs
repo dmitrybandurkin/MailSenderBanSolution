@@ -28,7 +28,7 @@ namespace MailSenderBan
         private void SendEmailEvent(object sender, RoutedEventArgs e)
         {
             WPFMailSender msend = new WPFMailSender(LogBox.Text, PassBox.Password, TestSenderData.port, TestSenderData.host);
-            msend.SendEMail(TestSenderData.from, TestSenderData.to, SubjectBox.Text, MailBox.Text);
+            msend.SendEMail(FromBox.Text, ToBox.Text, SubjectBox.Text, MailBox.Text);
         }
     }
 }

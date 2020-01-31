@@ -4,12 +4,12 @@ using System.Text;
 using System.Net.Mail;
 using System.Net;
 using System.Windows;
+using System.Security;
 
 namespace MailSenderBan
 {
     public class WPFMailSender
     {
-        //MailMessage mail;
         string login;
         string password;
         int port;
@@ -27,9 +27,11 @@ namespace MailSenderBan
         {
             using (MailMessage mail = new MailMessage(from, to))
             {
+
+
                 mail.Subject = subject;
                 mail.Body = body;
-            
+
                 try
                 {
                     using (SmtpClient smtp = new SmtpClient(host, port))
@@ -43,7 +45,7 @@ namespace MailSenderBan
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"from: {from}\n to: {to}\n subject: {subject}\n body: {body}\n login: {login}\n {ex.Message}");
+                    MessageBox.Show($"from: {from}\n to: {to}\n subject: {subject}\n body: {body}\n login: {login}\n{ex.Message}");
                 }
             }
         }

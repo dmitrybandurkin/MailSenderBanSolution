@@ -26,7 +26,7 @@
                 <TextBlock VerticalAlignment="Center" Grid.Row="2" Grid.Column="0">Тема:</TextBlock>
                 <TextBox x:Name="SubjectBox" VerticalAlignment="Center" Grid.Row ="2" Grid.Column="1"></TextBox>
                 <Button Grid.Row="3" Grid.Column="0" Click="SendEmailEvent">Отправить</Button>
-                <TextBox x:Name="MailBox" VerticalAlignment="Center" Grid.Row ="3" Grid.Column="1" Height="200">текст письма</TextBox>
+                <TextBox x:Name="MailBox" VerticalAlignment="Center" Grid.Row ="3" Grid.Column="1" Height="200"></TextBox>
             </Grid>
         </TabItem>
         <TabItem Header="Настройки сервера">
