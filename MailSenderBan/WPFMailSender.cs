@@ -40,7 +40,7 @@ namespace MailSenderBan
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{ex.Message}");
+                MessageBox.Show($"from: {from}\n to: {to}\n subject: {subject}\n body: {body}\n login: {login}\n {ex.Message}");
             }
         }
     }
