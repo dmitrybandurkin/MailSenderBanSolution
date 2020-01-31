@@ -9,7 +9,7 @@ namespace MailSenderBan
 {
     public class WPFMailSender
     {
-        MailMessage mail;
+        //MailMessage mail;
         string login;
         string password;
         int port;
@@ -25,22 +25,26 @@ namespace MailSenderBan
 
         public void SendEMail(string from, string to, string subject, string body)
         {
-            mail = new MailMessage(from, to);
-            mail.Subject = subject;
-            mail.Body = body;
-
-            try
+            using (MailMessage mail = new MailMessage(from, to))
             {
-                SmtpClient smtp = new SmtpClient(host, port);
-                smtp.Credentials = new NetworkCredential(login, password);
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
+                mail.Subject = subject;
+                mail.Body = body;
+            
+                try
+                {
+                    using (SmtpClient smtp = new SmtpClient(host, port))
+                    {
+                        smtp.Credentials = new NetworkCredential(login, password);
+                        smtp.EnableSsl = true;
+                        smtp.Send(mail);
+                    }
 
-                MessageBox.Show("OK");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"from: {from}\n to: {to}\n subject: {subject}\n body: {body}\n login: {login}\n {ex.Message}");
+                    MessageBox.Show("OK");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"from: {from}\n to: {to}\n subject: {subject}\n body: {body}\n login: {login}\n {ex.Message}");
+                }
             }
         }
     }
