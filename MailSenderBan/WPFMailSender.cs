@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Windows;
 using System.Security;
+using System.Windows.Controls;
 
 namespace MailSenderBan
 {
@@ -24,7 +25,7 @@ namespace MailSenderBan
             this.host = host;
         }
 
-        public void SendEMail(string from, string to, string subject, string body)
+        public void SendEMail(string from, string to, string subject, string body, TextBlock block)
         {
             using (MailMessage mail = new MailMessage(from, to))
             {
@@ -42,11 +43,11 @@ namespace MailSenderBan
                         smtp.Send(mail);
                     }
 
-                    MessageBox.Show("OK");
+                    block.Text = "Письмо успешно отправлено";
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"from: {from}\n to: {to}\n subject: {subject}\n body: {body}\n login: {login}\n{ex.Message}");
+                    block.Text = $"Ошибка при отправке письма {ex.Message}";
                 }
             }
         }
