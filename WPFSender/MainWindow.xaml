@@ -28,43 +28,51 @@
                             <ToolBar Header="Отправитель">
                                 <ComboBox Width="200"></ComboBox>
                                 <Button>
-                                    <fa:ImageAwesome Height="12" Icon="AddressBook" Foreground="Green"></fa:ImageAwesome>
+                                    <fa:ImageAwesome Height="12" Icon="AddressBook" Foreground="Green" ToolTip="Добавить"></fa:ImageAwesome>
                                 </Button>
                                 <Button>
-                                    <fa:ImageAwesome Height="12" Icon="Edit" Foreground="Orange"></fa:ImageAwesome>
+                                    <fa:ImageAwesome Height="12" Icon="Edit" Foreground="Orange" ToolTip="Изменить"></fa:ImageAwesome>
                                 </Button>
                                 <Button>
-                                    <fa:ImageAwesome Height="12" Icon="Trash" Foreground="red"></fa:ImageAwesome>
+                                    <fa:ImageAwesome Height="12" Icon="Trash" Foreground="red" ToolTip="Удалить"></fa:ImageAwesome>
                                 </Button>
                             </ToolBar>
                             <ToolBar Header="Планировщик">
-                                <fa:ImageAwesome Height="12" Icon="ClockOutline" Foreground="Green"></fa:ImageAwesome>
+                                <fa:ImageAwesome Height="12" Icon="ClockOutline" Foreground="Green" ToolTip="Перейти в планировщик"></fa:ImageAwesome>
                             </ToolBar>
                             <ToolBar Header="Сервера" Band="1">
                                 <ComboBox Width="200"></ComboBox>
                                 <Button>
-                                    <fa:ImageAwesome Height="12" Icon="AddressBook" Foreground="Green"></fa:ImageAwesome>
+                                    <fa:ImageAwesome Height="12" Icon="AddressBook" Foreground="Green" ToolTip="Добавить"></fa:ImageAwesome>
                                 </Button>
                                 <Button>
-                                    <fa:ImageAwesome Height="12" Icon="Edit" Foreground="Orange"></fa:ImageAwesome>
+                                    <fa:ImageAwesome Height="12" Icon="Edit" Foreground="Orange" ToolTip="Изменить"></fa:ImageAwesome>
                                 </Button>
                                 <Button>
-                                    <fa:ImageAwesome Height="12" Icon="Trash" Foreground="Red"></fa:ImageAwesome>
+                                    <fa:ImageAwesome Height="12" Icon="Trash" Foreground="Red" ToolTip="Удалить"></fa:ImageAwesome>
                                 </Button>
                             </ToolBar>
                             <ToolBar Header="Адресаты" Band="1">
                                 <Button>
-                                    <fa:ImageAwesome Height="12" Icon="AddressBook" Foreground="Green"></fa:ImageAwesome>
+                                    <fa:ImageAwesome Height="12" Icon="AddressBook" Foreground="Green" ToolTip="Добавить"></fa:ImageAwesome>
                                 </Button>
                                 <Button>
-                                    <fa:ImageAwesome Height="12" Icon="Edit" Foreground="Orange"></fa:ImageAwesome>
+                                    <fa:ImageAwesome Height="12" Icon="Edit" Foreground="Orange" ToolTip="Изменить"></fa:ImageAwesome>
                                 </Button>
                                 <Button>
-                                    <fa:ImageAwesome Height="12" Icon="Trash" Foreground="red"></fa:ImageAwesome>
+                                    <fa:ImageAwesome Height="12" Icon="Trash" Foreground="red" ToolTip="Удалить"></fa:ImageAwesome>
                                 </Button>
                             </ToolBar>
                         </ToolBarTray>
-                        <GroupBox Header="Получатели писем" Grid.Row="1"></GroupBox>
+                        <GroupBox Header="Получатели писем" Grid.Row="1">
+                            <DataGrid>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="id" MinWidth="50"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Имя" Width="*"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Адрес" Width="*"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </GroupBox>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Планировщик">
@@ -101,7 +109,33 @@
                         </GroupBox>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="Письма"></TabItem>
+                <TabItem Header="Письма">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="150" MaxWidth="300" Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Header="Список писем">
+                            <DockPanel>
+                                <UniformGrid DockPanel.Dock="Bottom" Rows="1">
+                                    <Button>Добавить</Button>
+                                    <Button>Удалить</Button>
+                                </UniformGrid>
+                                <ListBox></ListBox>
+                            </DockPanel>
+                        </GroupBox>
+                        <GroupBox Header="Выбранное письмо" Grid.Column="1">
+                            <DockPanel>
+                                <GroupBox Header="Тема письма" DockPanel.Dock="Top">
+                                    <TextBox>Текст заголовка письма</TextBox>
+                                </GroupBox>
+                                <GroupBox Header="Текст письма">
+                                    <TextBox TextWrapping="Wrap" AcceptsReturn="True">Текст тела письма</TextBox>
+                                </GroupBox>
+                            </DockPanel>
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
             </TabControl>
         </DockPanel>
     </Grid>
