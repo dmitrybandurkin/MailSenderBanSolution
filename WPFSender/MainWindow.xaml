@@ -1,0 +1,108 @@
+﻿<Window x:Class="WPFSender.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:WPFSender"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Файл"></MenuItem>
+                <MenuItem Header="Сервис"></MenuItem>
+                <MenuItem Header="Помощь"></MenuItem>
+            </Menu>
+            <StatusBar DockPanel.Dock="Bottom">
+                <TextBlock>Тут что-то должно быть</TextBlock>
+            </StatusBar>
+            <TabControl>
+                <TabItem Header="Рассылка">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ToolBarTray>
+                            <ToolBar Header="Отправитель">
+                                <ComboBox Width="200"></ComboBox>
+                                <Button>
+                                    <fa:ImageAwesome Height="12" Icon="AddressBook" Foreground="Green"></fa:ImageAwesome>
+                                </Button>
+                                <Button>
+                                    <fa:ImageAwesome Height="12" Icon="Edit" Foreground="Orange"></fa:ImageAwesome>
+                                </Button>
+                                <Button>
+                                    <fa:ImageAwesome Height="12" Icon="Trash" Foreground="red"></fa:ImageAwesome>
+                                </Button>
+                            </ToolBar>
+                            <ToolBar Header="Планировщик">
+                                <fa:ImageAwesome Height="12" Icon="ClockOutline" Foreground="Green"></fa:ImageAwesome>
+                            </ToolBar>
+                            <ToolBar Header="Сервера" Band="1">
+                                <ComboBox Width="200"></ComboBox>
+                                <Button>
+                                    <fa:ImageAwesome Height="12" Icon="AddressBook" Foreground="Green"></fa:ImageAwesome>
+                                </Button>
+                                <Button>
+                                    <fa:ImageAwesome Height="12" Icon="Edit" Foreground="Orange"></fa:ImageAwesome>
+                                </Button>
+                                <Button>
+                                    <fa:ImageAwesome Height="12" Icon="Trash" Foreground="Red"></fa:ImageAwesome>
+                                </Button>
+                            </ToolBar>
+                            <ToolBar Header="Адресаты" Band="1">
+                                <Button>
+                                    <fa:ImageAwesome Height="12" Icon="AddressBook" Foreground="Green"></fa:ImageAwesome>
+                                </Button>
+                                <Button>
+                                    <fa:ImageAwesome Height="12" Icon="Edit" Foreground="Orange"></fa:ImageAwesome>
+                                </Button>
+                                <Button>
+                                    <fa:ImageAwesome Height="12" Icon="Trash" Foreground="red"></fa:ImageAwesome>
+                                </Button>
+                            </ToolBar>
+                        </ToolBarTray>
+                        <GroupBox Header="Получатели писем" Grid.Row="1"></GroupBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Планировщик">
+                    <DockPanel>
+                        <GroupBox MinWidth="150"  Header="Управление">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock>Календарь</TextBlock>
+                                <Calendar></Calendar>
+                                <StackPanel Orientation="Vertical">
+                                    <Button HorizontalContentAlignment="Stretch">
+                                        <DockPanel Margin="20,0">
+                                            <TextBlock HorizontalAlignment="Center">Запланировать</TextBlock>
+                                            <fa:ImageAwesome Height="12" Icon="ClockOutline"></fa:ImageAwesome>
+                                        </DockPanel>
+                                    </Button>
+                                    <Button HorizontalContentAlignment="Stretch">
+                                        <DockPanel Margin="40,0">
+                                            <TextBlock HorizontalAlignment="Center">Отправить</TextBlock>
+                                            <fa:ImageAwesome Height="12" Icon="Send"></fa:ImageAwesome>
+                                        </DockPanel>
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="Задания">
+                            <ListBox>
+                                <ListBoxItem HorizontalContentAlignment="Stretch">
+                                    <GroupBox Header="Задание 1">вловыаловылао</GroupBox>
+                                </ListBoxItem>
+                                <ListBoxItem HorizontalContentAlignment="Stretch">
+                                    <GroupBox Header="Задание 2">вловыаловылао</GroupBox>
+                                </ListBoxItem>
+                            </ListBox>
+                        </GroupBox>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Письма"></TabItem>
+            </TabControl>
+        </DockPanel>
+    </Grid>
+</Window>
