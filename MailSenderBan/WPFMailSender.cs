@@ -12,7 +12,6 @@ namespace MailSenderBan
     public class WPFMailSender
     {
         string login;
-        //string password;
         SecureString password;
         int port;
         string host;

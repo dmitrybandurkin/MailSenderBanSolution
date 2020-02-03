@@ -16,9 +16,9 @@
                 <MenuItem Header="Помощь"></MenuItem>
             </Menu>
             <StatusBar DockPanel.Dock="Bottom">
-                <TextBlock>Тут что-то должно быть</TextBlock>
+                <TextBlock x:Name="StatusBox"></TextBlock>
             </StatusBar>
-            <TabControl>
+            <TabControl x:Name="tabControl">
                 <TabItem Header="Рассылка">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -27,8 +27,8 @@
                         </Grid.RowDefinitions>
                         <ToolBarTray>
                             <ToolBar Header="Отправитель">
-                                <ComboBox Width="200" Height="20" ItemsSource="{x:Static data:DataStorage.Senders}" SelectedIndex="0">
-                                    <ComboBox.ItemTemplate>
+                                <ComboBox x:Name="LogBox" Width="200" Height="20" ItemsSource="{x:Static data:DataStorage.Senders}" SelectedIndex="0">
+                                    <ComboBox.ItemTemplate >
                                         <DataTemplate DataType="models:sender">
                                             <StackPanel Orientation="Vertical">
                                                 <TextBlock Text="{Binding Name}" FontWeight="Bold"></TextBlock>
@@ -46,6 +46,7 @@
                                 <Button>
                                     <fa:ImageAwesome Height="12" Icon="Trash" Foreground="red" ToolTip="Удалить"></fa:ImageAwesome>
                                 </Button>
+                                <PasswordBox x:Name="PassBox" Width="150"></PasswordBox>
                             </ToolBar>
                             <ToolBar Header="Планировщик">
                                 <Button Click="OnPlanningClickButton">
@@ -53,7 +54,7 @@
                                 </Button>
                             </ToolBar>
                             <ToolBar Header="Сервера" Band="1">
-                                <ComboBox Width="200" Height="20" ItemsSource="{x:Static data:DataStorage.Servers}" SelectedIndex="0">
+                                <ComboBox x:Name="ServerBox" Width="200" Height="20" ItemsSource="{x:Static data:DataStorage.Servers}" SelectedIndex="0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate DataType="models:server">
                                             <StackPanel Orientation="Vertical">
@@ -86,22 +87,23 @@
                             </ToolBar>
                         </ToolBarTray>
                         <GroupBox Header="Получатели писем" Grid.Row="1">
-                            <DataGrid>
+                            <DataGrid x:Name="RecipientBox" ItemsSource="{x:Static data:DataStorage.Recipients}" AutoGenerateColumns="False">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="id" MinWidth="50"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Имя" Width="*"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Адрес" Width="*"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="id" MinWidth="50" Binding="{Binding Id}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding Address}"></DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </GroupBox>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="Planer" Header="Планировщик">
+                <TabItem Header="Планировщик">
                     <DockPanel>
                         <GroupBox MinWidth="150"  Header="Управление">
                             <StackPanel Orientation="Vertical">
                                 <TextBlock>Календарь</TextBlock>
                                 <Calendar></Calendar>
+                                
                                 <StackPanel Orientation="Vertical">
                                     <Button HorizontalContentAlignment="Stretch">
                                         <DockPanel Margin="20,0">
@@ -109,7 +111,7 @@
                                             <fa:ImageAwesome Height="12" Icon="ClockOutline"></fa:ImageAwesome>
                                         </DockPanel>
                                     </Button>
-                                    <Button HorizontalContentAlignment="Stretch">
+                                    <Button HorizontalContentAlignment="Stretch" Click="SendMailButton_Click">
                                         <DockPanel Margin="40,0">
                                             <TextBlock HorizontalAlignment="Center">Отправить</TextBlock>
                                             <fa:ImageAwesome Height="12" Icon="Send"></fa:ImageAwesome>
@@ -148,10 +150,10 @@
                         <GroupBox Header="Выбранное письмо" Grid.Column="1">
                             <DockPanel>
                                 <GroupBox Header="Тема письма" DockPanel.Dock="Top">
-                                    <TextBox>Текст заголовка письма</TextBox>
+                                    <TextBox x:Name="SubjectBox"></TextBox>
                                 </GroupBox>
                                 <GroupBox Header="Текст письма">
-                                    <TextBox TextWrapping="Wrap" AcceptsReturn="True">Текст тела письма</TextBox>
+                                    <TextBox x:Name="BodyMailBox" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
                                 </GroupBox>
                             </DockPanel>
                         </GroupBox>
