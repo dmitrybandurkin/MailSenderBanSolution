@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
-        xmlns:data="clr-namespace:MailSenderLib;assembly=MailSenderLib"
+        xmlns:data="clr-namespace:MailSenderLib.Data;assembly=MailSenderLib"
         xmlns:local="clr-namespace:WPFSender"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -27,7 +27,16 @@
                         </Grid.RowDefinitions>
                         <ToolBarTray>
                             <ToolBar Header="Отправитель">
-                                <ComboBox Width="200"></ComboBox>
+                                <ComboBox Width="200" Height="20" ItemsSource="{x:Static data:DataStorage.Senders}" SelectedIndex="0">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate DataType="models:sender">
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold"></TextBlock>
+                                                <TextBlock Text="{Binding Address}" FontStyle="Italic" Opacity="0.6"></TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                                 <Button>
                                     <fa:ImageAwesome Height="12" Icon="AddressBook" Foreground="Green" ToolTip="Добавить"></fa:ImageAwesome>
                                 </Button>
@@ -39,10 +48,21 @@
                                 </Button>
                             </ToolBar>
                             <ToolBar Header="Планировщик">
-                                <fa:ImageAwesome Height="12" Icon="ClockOutline" Foreground="Green" ToolTip="Перейти в планировщик"></fa:ImageAwesome>
+                                <Button Click="OnPlanningClickButton">
+                                    <fa:ImageAwesome Height="12" Icon="ClockOutline" Foreground="Green" ToolTip="Перейти в планировщик"></fa:ImageAwesome>
+                                </Button>
                             </ToolBar>
                             <ToolBar Header="Сервера" Band="1">
-                                <ComboBox Width="200"></ComboBox>
+                                <ComboBox Width="200" Height="20" ItemsSource="{x:Static data:DataStorage.Servers}" SelectedIndex="0">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate DataType="models:server">
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold"></TextBlock>
+                                                <TextBlock Text="{Binding Address}" Opacity="0.6" ToolTip="{Binding Port}"></TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                                 <Button>
                                     <fa:ImageAwesome Height="12" Icon="AddressBook" Foreground="Green" ToolTip="Добавить"></fa:ImageAwesome>
                                 </Button>
@@ -76,7 +96,7 @@
                         </GroupBox>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Планировщик">
+                <TabItem x:Name="Planer" Header="Планировщик">
                     <DockPanel>
                         <GroupBox MinWidth="150"  Header="Управление">
                             <StackPanel Orientation="Vertical">

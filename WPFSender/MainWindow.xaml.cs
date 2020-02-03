@@ -24,5 +24,10 @@ namespace WPFSender
         {
             InitializeComponent();
         }
+
+        private void OnPlanningClickButton(object sender, RoutedEventArgs e)
+        {
+            Planer.IsSelected = true;
+        }
     }
 }

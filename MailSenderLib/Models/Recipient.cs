@@ -4,9 +4,9 @@ using System.Text;
 
 namespace MailSenderLib.Models
 {
-    class Senders
+    class Recipient
     {
         public string Name { get; set; }
-        public string Adress { get; set; }
+        public string Address { get; set; }
     }
 }
