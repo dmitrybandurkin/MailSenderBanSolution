@@ -6,51 +6,70 @@
         xmlns:local="clr-namespace:MailSenderBan"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <TabControl FontSize="20">
-        <TabItem Header="Отправка письма">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150*"/>
-                    <ColumnDefinition Width="600*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="150*"/>
-                </Grid.RowDefinitions>
-                <TextBlock VerticalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,635,0">Отправитель:</TextBlock>
-                <TextBox x:Name="FromBox" VerticalAlignment="Center" Grid.Column="1"></TextBox>
-                <TextBlock VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,635,0">Получатель:</TextBlock>
-                <TextBox x:Name="ToBox" VerticalAlignment="Center" Grid.Row ="1" Grid.Column="1"></TextBox>
-                <TextBlock VerticalAlignment="Center" Grid.Row="2" Grid.Column="0">Тема:</TextBlock>
-                <TextBox x:Name="SubjectBox" VerticalAlignment="Center" Grid.Row ="2" Grid.Column="1"></TextBox>
-                <Button Grid.Row="3" Grid.Column="0" Click="SendEmailEvent">Отправить</Button>
-                <TextBox x:Name="MailBox" VerticalAlignment="Center" Grid.Row ="3" Grid.Column="1" Height="200">текст письма</TextBox>
-            </Grid>
-        </TabItem>
-        <TabItem Header="Настройки сервера">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="220*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150*"/>
-                    <ColumnDefinition Width="600*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">Хост:</TextBlock>
-                <TextBox x:Name="HostBox" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"></TextBox>
-                <TextBlock x:Name="PortBox" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0">Порт:</TextBlock>
-                <TextBox VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"></TextBox>
-                <TextBlock VerticalAlignment="Center" Grid.Row="2" Grid.Column="0">Логин:</TextBlock>
-                <TextBox x:Name="LogBox" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"></TextBox>
-                <TextBlock VerticalAlignment="Center" Grid.Row="3" Grid.Column="0">Пароль:</TextBlock>
-                <PasswordBox x:Name="PassBox" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"></PasswordBox>
-            </Grid>
-        </TabItem>
-    </TabControl>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Помощь">
+                <MenuItem Header="О программе"></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <StatusBar DockPanel.Dock ="Bottom" Height="30">
+            <StatusBarItem>
+                <TextBlock x:Name= "StatusBox"></TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+        <TabControl FontSize="15">
+            <TabItem Header="Отправка письма">
+                <DockPanel>
+                    <Button DockPanel.Dock="Bottom" Height="60" Click="SendEmailEvent">Отправить</Button>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <DockPanel Grid.Row="0" Grid.Column ="0">
+                            <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Right" TextAlignment="Center">Отправитель:</TextBlock>
+                            <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Right" TextAlignment="Center">Получатель:</TextBlock>
+                            <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Right" TextAlignment="Center">Тема:</TextBlock>
+                            <TextBlock DockPanel.Dock="Top" Margin="0,70" HorizontalAlignment="Right" TextAlignment="Center">Текст письма:</TextBlock>
+                        </DockPanel>
+                        <DockPanel Grid.Row="0" Grid.Column ="1">
+                            <TextBox DockPanel.Dock="Top" x:Name="FromBox"></TextBox>
+                            <TextBox DockPanel.Dock="Top" x:Name="ToBox"></TextBox>
+                            <TextBox DockPanel.Dock="Top" x:Name="SubjectBox"></TextBox>
+                            <TextBox DockPanel.Dock="Top" x:Name="MailBox"></TextBox>
+                        </DockPanel>
+                    </Grid>
+                    
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Настройки сервера">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="180*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150*"/>
+                        <ColumnDefinition Width="600*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">Хост:</TextBlock>
+                    <TextBox x:Name="HostBox" VerticalAlignment="Center" Height="40" Grid.Row="0" Grid.Column="1"></TextBox>
+                    <TextBlock x:Name="PortBox" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0">Порт:</TextBlock>
+                    <TextBox VerticalAlignment="Center" Height="40" Grid.Row="1" Grid.Column="1"></TextBox>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0">Логин:</TextBlock>
+                    <TextBox x:Name="LogBox" Grid.Row="2" Grid.Column="1" Height="40"></TextBox>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0">Пароль:</TextBlock>
+                    <PasswordBox x:Name="PassBox" VerticalAlignment="Center" Height="40" Grid.Row="3" Grid.Column="1"></PasswordBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+    </DockPanel>
 </Window>
