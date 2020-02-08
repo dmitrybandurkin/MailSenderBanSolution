@@ -8,7 +8,9 @@
         xmlns:data="clr-namespace:MailSenderLib.Data;assembly=MailSenderLib"
         xmlns:local="clr-namespace:WPFSender"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="{Binding Title}" 
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
+        Height="450" Width="800">
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -88,7 +90,7 @@
                             </ToolBar>
                         </ToolBarTray>
                         <GroupBox Header="Получатели писем" Grid.Row="1">
-                            <DataGrid x:Name="RecipientBox" ItemsSource="{x:Static data:DataStorage.Recipients}" AutoGenerateColumns="False">
+                            <DataGrid x:Name="RecipientBox" ItemsSource="{Binding Recipients}" AutoGenerateColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="id" MinWidth="50" Binding="{Binding Id}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"></DataGridTextColumn>
