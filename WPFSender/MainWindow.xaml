@@ -6,6 +6,7 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:data="clr-namespace:MailSenderLib.Data;assembly=MailSenderLib"
+        xmlns:view="clr-namespace:WPFSender.Views"
         xmlns:local="clr-namespace:WPFSender"
         mc:Ignorable="d"
         Title="{Binding Title}" 
@@ -90,13 +91,14 @@
                             </ToolBar>
                         </ToolBarTray>
                         <GroupBox Header="Получатели писем" Grid.Row="1">
-                            <DataGrid x:Name="RecipientBox" ItemsSource="{Binding Recipients}" AutoGenerateColumns="False">
+                            <view:RecipientsView></view:RecipientsView>
+                            <!--<DataGrid x:Name="RecipientBox" ItemsSource="{Binding Recipients}" AutoGenerateColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="id" MinWidth="50" Binding="{Binding Id}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding Address}"></DataGridTextColumn>
                                 </DataGrid.Columns>
-                            </DataGrid>
+                            </DataGrid>-->
                         </GroupBox>
                     </Grid>
                 </TabItem>
