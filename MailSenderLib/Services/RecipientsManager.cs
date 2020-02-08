@@ -6,10 +6,10 @@ using MailSenderLib.Services.Interfaces;
 
 namespace MailSenderLib.Services
 {
-    public class RecipientsManager
+    public class RecipientsManager:IRecipientsManager
     {
-        private RecipientsStoreInMemory store;
-        public RecipientsManager(RecipientsStoreInMemory Store)
+        private IRecipientsStore store;
+        public RecipientsManager(IRecipientsStore Store)
         {
             this.store = Store;
         }
@@ -32,6 +32,11 @@ namespace MailSenderLib.Services
         {
             store.SaveChanges();
         }
-        //Delete(Recipient)
+
+        public void Delete(Recipient recipient)
+        {
+            //TODO
+        }
+
     }
 }

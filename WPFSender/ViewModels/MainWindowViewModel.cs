@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.CommandWpf;
 using MailSenderLib.Models;
 using MailSenderLib.Services;
+using MailSenderLib.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +13,7 @@ namespace WPFSender.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private readonly RecipientsManager recipientsManager;
+        private readonly IRecipientsManager recipientsManager;
         private static string title;
         private static ObservableCollection<Recipient> recipients;
         private Recipient selectedRecipient;
@@ -56,7 +57,7 @@ namespace WPFSender.ViewModel
             recipientsManager.SaveChanges();
         }
 
-        public  MainWindowViewModel(RecipientsManager recipentsManager)
+        public  MainWindowViewModel(IRecipientsManager recipentsManager)
         {
             LoadRecipientDataCommand = new RelayCommand(OnLoadRecipientDataCommandExecuted, CanLoadRecipientsDataCommandExecute);
             SaveRecipientChangesCommand = new RelayCommand<Recipient>(OnSaveRecipientChangesCommandExecuted, CanSaveRecipientChangesCommandExecute);
