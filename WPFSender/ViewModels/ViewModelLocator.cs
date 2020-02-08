@@ -16,7 +16,7 @@ namespace WPFSender.ViewModels
             var services = SimpleIoc.Default;
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             services.Register<MainWindowViewModel>();
-            services.Register<RecipentsManager>();
+            services.Register<RecipientsManager>();
             services.Register<RecipientsStoreInMemory>();
         }
 

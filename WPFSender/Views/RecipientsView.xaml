@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFSender.Views"
              mc:Ignorable="d" 
+             DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <DockPanel Margin="3">
@@ -13,8 +14,10 @@
                 <TextBlock>Фильтр:</TextBlock>
                 <TextBox></TextBox>
             </DockPanel>
-            <Button DockPanel.Dock="Bottom" HorizontalAlignment="Center" Padding="40,5" Margin="0,5,0,10">Обновить</Button>
-            <DataGrid ItemsSource="{Binding MainWindowModel.Recipients, Source={StaticResource Locator}}" AutoGenerateColumns="False">
+            <Button DockPanel.Dock="Bottom" HorizontalAlignment="Center" Padding="40,5" Margin="0,5,0,10" Command="{Binding LoadRecipientDataCommand}" >Обновить</Button>
+            <DataGrid ItemsSource="{Binding Recipients}" 
+                      SelectedItem="{Binding SelectedRecipient}"
+                      AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="id" MinWidth="50" Binding="{Binding Id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"></DataGridTextColumn>

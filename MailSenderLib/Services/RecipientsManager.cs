@@ -6,10 +6,10 @@ using MailSenderLib.Services.Interfaces;
 
 namespace MailSenderLib.Services
 {
-    public class RecipentsManager
+    public class RecipientsManager
     {
         private RecipientsStoreInMemory store;
-        public RecipentsManager(RecipientsStoreInMemory Store)
+        public RecipientsManager(RecipientsStoreInMemory Store)
         {
             this.store = Store;
         }
@@ -18,12 +18,20 @@ namespace MailSenderLib.Services
             return store.Get();
         }
 
-    public void Add(Recipient NewRecipient)
+        public void Add(Recipient NewRecipient)
         {
 
         }
 
-    //Edit(Recipient)
-    //Delete(Recipient)
+        public void Edit(Recipient recipient)
+        {
+            store.Edit(recipient.Id, recipient);
+        }
+
+        public void SaveChanges()
+        {
+            store.SaveChanges();
+        }
+        //Delete(Recipient)
     }
 }

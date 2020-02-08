@@ -54,9 +54,9 @@ namespace WPFSender
             //    StatusBox.Text = $"Не выбран получатель";
             //    tabControl.SelectedIndex = 0;
             //    return;
-            //}
-            //StatusBox.Text = recipient.Address;
-
+            //}                                               
+            //StatusBox.Text = recipient.Address;             
+                                                              
 
             //var senderAddress = LogBox.SelectedItem as Sender;
             //var server = ServerBox.SelectedItem as Server;

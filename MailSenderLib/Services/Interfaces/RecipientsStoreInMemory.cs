@@ -9,5 +9,16 @@ namespace MailSenderLib.Services.Interfaces
     public class RecipientsStoreInMemory
     {
         public IEnumerable<Recipient> Get() => DataStorage.Recipients;
+
+        public void Edit(int id, Recipient recipient)
+        {
+            //нет базы данных
+        }
+
+        public void SaveChanges()
+        {
+            //нет базы данных
+        }
+
     }
 }

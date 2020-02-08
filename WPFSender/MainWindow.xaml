@@ -91,7 +91,15 @@
                             </ToolBar>
                         </ToolBarTray>
                         <GroupBox Header="Получатели писем" Grid.Row="1">
-                            <view:RecipientsView></view:RecipientsView>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <view:RecipientsView Grid.Column="0"></view:RecipientsView>
+                                <view:RecipientEditor Grid.Column="1"></view:RecipientEditor>
+                            </Grid>
+                            
                             <!--<DataGrid x:Name="RecipientBox" ItemsSource="{Binding Recipients}" AutoGenerateColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="id" MinWidth="50" Binding="{Binding Id}"></DataGridTextColumn>
