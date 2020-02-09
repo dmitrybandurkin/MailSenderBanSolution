@@ -9,8 +9,13 @@ namespace MailSenderLib.Services.Interfaces
     {
         IEnumerable<Recipient> Get();
 
+        Recipient GetById(int id);
+
+        int Create(Recipient recipient);
         void Edit(int id, Recipient recipient);
 
         void SaveChanges();
+
+        void Delete(int id);
     }
 }

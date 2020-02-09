@@ -11,7 +11,7 @@ namespace MailSenderLib.Services
         private IRecipientsStore store;
         public RecipientsManager(IRecipientsStore Store)
         {
-            this.store = Store;
+            store = Store;
         }
         public IEnumerable<Recipient> GetAll()
         {
@@ -35,7 +35,7 @@ namespace MailSenderLib.Services
 
         public void Delete(Recipient recipient)
         {
-            //TODO
+            store.Delete(recipient);
         }
 
     }

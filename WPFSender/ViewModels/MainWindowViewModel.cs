@@ -41,26 +41,34 @@ namespace WPFSender.ViewModel
             set => Set(ref selectedRecipient, value);
         }
         public ICommand LoadRecipientDataCommand { get; }
-
-        public ICommand SaveRecipientChangesCommand { get; }
         private bool CanLoadRecipientsDataCommandExecute() => true;
         private void OnLoadRecipientDataCommandExecuted()
         {
             Recipients = new ObservableCollection<Recipient>(recipientsManager.GetAll());
         }
-
+        public ICommand SaveRecipientChangesCommand { get; }
         private bool CanSaveRecipientChangesCommandExecute(Recipient recipient) => recipient != null;
-
         private void OnSaveRecipientChangesCommandExecuted(Recipient recipient)
         {
             recipientsManager.Edit(recipient);
             recipientsManager.SaveChanges();
         }
 
+        public ICommand DeleteRecipientDataCommand { get; }
+
+        private bool CanDeleteRecipientDataCommand(Recipient recipient) => recipient != null;
+
+        private void OnDeleteRecipientDataCommand(Recipient recipient)
+        {
+            recipientsManager.Delete(recipient);
+            Recipients = new ObservableCollection<Recipient>(recipientsManager.GetAll()); //строка для теста
+        }
+
         public  MainWindowViewModel(IRecipientsManager recipentsManager)
         {
             LoadRecipientDataCommand = new RelayCommand(OnLoadRecipientDataCommandExecuted, CanLoadRecipientsDataCommandExecute);
             SaveRecipientChangesCommand = new RelayCommand<Recipient>(OnSaveRecipientChangesCommandExecuted, CanSaveRecipientChangesCommandExecute);
+            DeleteRecipientDataCommand = new RelayCommand<Recipient>(OnDeleteRecipientDataCommand, CanDeleteRecipientDataCommand);
             this.recipientsManager = recipentsManager;
         }
         

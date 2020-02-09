@@ -20,5 +20,9 @@ namespace MailSenderLib.Services.Interfaces
             //нет базы данных
         }
 
+        public void Delete(Recipient recipient)
+        {
+            DataStorage.Recipients.RemoveAt(0);
+        }
     }
 }
