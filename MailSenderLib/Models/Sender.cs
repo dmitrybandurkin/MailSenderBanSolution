@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MailSenderLib.Models.Base;
 
 namespace MailSenderLib.Models
 {
-    public class Sender
+    public class Sender:PersonEntity
     {
-        public string Name { get; set; }
-        public string Address { get; set; }
-
         public Sender(string name, string address)
         {
             Name = name;

@@ -1,11 +1,10 @@
 ﻿using System;
+using MailSenderLib.Models.Base;
 
 namespace MailSenderLib
 {
-    public class Server
+    public class Server:NamedEntity
     {
-        public string Name { get; set; }
-
         public bool SslEnable { get; set; }
         public string Address { get; set; }
         public int Port { get; set; }
