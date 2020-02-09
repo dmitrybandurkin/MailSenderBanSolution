@@ -11,6 +11,6 @@ namespace MailSenderLib.Services.Interfaces
         void Add(Recipient NewRecipient);
         void Edit(Recipient recipient);
         void SaveChanges();
-        void Delete(Recipient recipient);
+        Recipient Remove(int id);
     }
 }

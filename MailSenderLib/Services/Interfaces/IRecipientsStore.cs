@@ -7,7 +7,7 @@ namespace MailSenderLib.Services.Interfaces
 {
     public interface IRecipientsStore
     {
-        IEnumerable<Recipient> Get();
+        IEnumerable<Recipient> GetAll();
 
         Recipient GetById(int id);
 
@@ -16,6 +16,6 @@ namespace MailSenderLib.Services.Interfaces
 
         void SaveChanges();
 
-        void Delete(int id);
+        Recipient Remove(int id);
     }
 }
