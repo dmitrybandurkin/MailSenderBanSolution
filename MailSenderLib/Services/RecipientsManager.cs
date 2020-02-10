@@ -35,7 +35,7 @@ namespace MailSenderLib.Services
 
         public Recipient Remove(int id)
         {
-            store.Remove(id);
+            return store.Remove(id);
         }
 
     }

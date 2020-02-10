@@ -60,7 +60,7 @@ namespace WPFSender.ViewModel
 
         private void OnDeleteRecipientDataCommand(Recipient recipient)
         {
-            recipientsManager.Delete(recipient);
+            recipientsManager.Remove(recipient.Id);
             Recipients = new ObservableCollection<Recipient>(recipientsManager.GetAll()); //строка для теста
         }
 
