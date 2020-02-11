@@ -16,9 +16,9 @@ namespace WPFSender.Views
     /// <summary>
     /// Логика взаимодействия для UserControl1.xaml
     /// </summary>
-    public partial class ToolBarView : UserControl
+    public partial class ToolBarSenderView : UserControl
     {
-        public ToolBarView()
+        public ToolBarSenderView()
         {
             InitializeComponent();
         }

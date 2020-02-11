@@ -1,5 +1,6 @@
 ﻿using MailSenderLib.Models.Base;
 using MailSenderLib.Services.Interfaces;
+using MailSenderLib.Services.Interfaces.IStore;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -10,7 +11,12 @@ namespace MailSenderLib.Services.InMemory
     {
         private readonly ObservableCollection<T> items;
 
-        protected DataStoreInMemory(ObservableCollection<T> Items = null) => items = Items ?? new ObservableCollection<T>();
+        protected DataStoreInMemory(ObservableCollection<T> Items = null)
+        {
+            System.Diagnostics.Debug.WriteLine("6");
+            items = Items ?? new ObservableCollection<T>();
+            System.Diagnostics.Debug.WriteLine("7");
+        }
 
         public IEnumerable<T> GetAll() => items;
         public int Create(T item)

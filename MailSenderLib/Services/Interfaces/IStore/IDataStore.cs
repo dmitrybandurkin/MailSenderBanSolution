@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MailSenderLib.Services.Interfaces
+namespace MailSenderLib.Services.Interfaces.IStore
 {
     /// <summary>
     /// хранилище объектов

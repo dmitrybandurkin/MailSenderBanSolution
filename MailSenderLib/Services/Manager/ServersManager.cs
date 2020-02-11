@@ -1,13 +1,14 @@
 ﻿using MailSenderLib.Models;
 using System.Collections.Generic;
 using MailSenderLib.Services.Interfaces;
+using MailSenderLib.Services.Interfaces.IManager;
 
 namespace MailSenderLib.Services.Manager
 {
-    public class ServerManager : IServerManager
+    public class ServersManager : IServersManager
     {
-        private IServerManager store;
-        public ServerManager(IServerManager Store)
+        private IServersManager store;
+        public ServersManager(IServersManager Store)
         {
             store = Store;
         }

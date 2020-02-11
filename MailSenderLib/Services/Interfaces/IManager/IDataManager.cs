@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Text;
+using System.Collections.Generic;
 
-namespace MailSenderLib.Services.Interfaces
+namespace MailSenderLib.Services.Interfaces.IManager
 {
     public interface IDataManager<T>
     {

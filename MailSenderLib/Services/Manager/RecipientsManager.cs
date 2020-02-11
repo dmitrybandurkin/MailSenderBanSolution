@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using MailSenderLib.Services.Interfaces;
+using MailSenderLib.Services.Interfaces.IManager;
+using MailSenderLib.Services.Interfaces.IStore;
 
 namespace MailSenderLib.Services.Manager
 {

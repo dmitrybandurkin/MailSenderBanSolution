@@ -5,6 +5,7 @@ using System.Text;
 using MailSenderLib.Data;
 using System.Linq;
 using MailSenderLib.Services.Interfaces;
+using MailSenderLib.Services.Interfaces.IStore;
 
 namespace MailSenderLib.Services.InMemory
 {

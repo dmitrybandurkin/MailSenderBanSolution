@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:MailSenderBan"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -24,7 +24,7 @@
                 <DockPanel>
                     <Button ToolTip="Отправить письмо" DockPanel.Dock="Bottom" Height="60" Click="SendEmailEvent">
                         <StackPanel Orientation="Horizontal">
-                            <fa:ImageAwesome Margin="0,0,50,0" Height="40" Icon="Send" Foreground="Green"></fa:ImageAwesome>
+                            <!--<fa:ImageAwesome Margin="0,0,50,0" Height="40" Icon=""  Foreground="Green"></fa:ImageAwesome>-->
                             <TextBlock VerticalAlignment="Center">Отправить письмо</TextBlock>
                         </StackPanel>
                         

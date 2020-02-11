@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFSender.Views"
-             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:fa="http://schemas.fontawesome.com/icons/"
              mc:Ignorable="d" 
              DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
-             d:DesignHeight="433.333" d:DesignWidth="220.513">
+             d:DesignHeight="112.026" d:DesignWidth="220.513">
     <Grid Margin="5,5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -29,13 +29,13 @@
         <UniformGrid Rows="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Center"
                      Margin="0,10">
             <Button Margin="10,0" Padding="10,5" Width="50" Command="{Binding SaveRecipientChangesCommand}" CommandParameter="{Binding SelectedRecipient}">
-                <fa:ImageAwesome Height="12" Icon="Save"></fa:ImageAwesome>
+                <fa:ImageAwesome Height="12" Icon="Solid_Save" Foreground="Green"></fa:ImageAwesome>
             </Button>
             <Button Margin="10,0">
-                <fa:ImageAwesome Height="12" Icon="Plus"></fa:ImageAwesome>
+                <fa:ImageAwesome Height="12" Icon="Regular_PlusSquare" Foreground="Green"></fa:ImageAwesome>
             </Button>
             <Button Margin="10,0" Command="{Binding DeleteRecipientDataCommand}" CommandParameter="{Binding SelectedRecipient}">
-                <fa:ImageAwesome Height="12" Icon="Trash"></fa:ImageAwesome>
+                <fa:ImageAwesome Height="12" Icon="Solid_Trash"  Foreground="red"></fa:ImageAwesome>
             </Button>
         </UniformGrid>
     </Grid>

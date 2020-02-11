@@ -4,6 +4,7 @@ using MailSenderLib;
 using MailSenderLib.Models;
 using MailSenderLib.Services;
 using MailSenderLib.Services.Interfaces;
+using MailSenderLib.Services.Interfaces.IManager;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,7 +16,7 @@ namespace WPFSender.ViewModel
     public class MainWindowViewModel : ViewModelBase
     {
         private readonly IRecipientsManager recipientsManager;
-        //private readonly IServer;
+        private readonly IServersManager serversManager;
         private string title = "Рассыльщик почты";
         private ObservableCollection<Recipient> recipients;
         private ObservableCollection<Server> servers;
@@ -77,13 +78,15 @@ namespace WPFSender.ViewModel
             Recipients = new ObservableCollection<Recipient>(recipientsManager.GetAll()); //строка для теста
         }
 
-        public  MainWindowViewModel(IRecipientsManager recipentsManager)
+        //public MainWindowViewModel(IRecipientsManager recipientsManager)
+        public MainWindowViewModel(IServersManager serversManager)
         {
             LoadRecipientDataCommand = new RelayCommand(OnLoadRecipientDataCommandExecuted, CanLoadRecipientsDataCommandExecute);
             SaveRecipientChangesCommand = new RelayCommand<Recipient>(OnSaveRecipientChangesCommandExecuted, CanSaveRecipientChangesCommandExecute);
             DeleteRecipientDataCommand = new RelayCommand<Recipient>(OnDeleteRecipientDataCommand, CanDeleteRecipientDataCommand);
-            recipientsManager = recipentsManager;
-            Servers = new ObservableCollection<Server>();
+            //this.recipientsManager = recipientsManager;
+            //this.serversManager = serversManager;
+            //Servers = new ObservableCollection<Server>(this.serversManager.GetAll());
         }
         
 
