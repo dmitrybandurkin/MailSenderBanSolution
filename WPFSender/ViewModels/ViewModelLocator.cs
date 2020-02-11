@@ -6,6 +6,8 @@ using GalaSoft.MvvmLight.Ioc;
 using WPFSender.ViewModel;
 using MailSenderLib.Services;
 using MailSenderLib.Services.Interfaces;
+using MailSenderLib.Services.InMemory;
+using MailSenderLib.Services.Manager;
 
 namespace WPFSender.ViewModels
 {
@@ -18,6 +20,8 @@ namespace WPFSender.ViewModels
             services.Register<MainWindowViewModel>();
             services.Register<IRecipientsManager,RecipientsManager>();
             services.Register<IRecipientsStore,RecipientsStoreInMemory>();
+            services.Register<IServerManager, ServerManager>();
+            services.Register<IServerStore, ServersStoreInMemory>();
         }
 
         public MainWindowViewModel MainWindowModel => ServiceLocator.Current.GetInstance<MainWindowViewModel>();

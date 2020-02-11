@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using MailSenderLib.Data;
 using System.Linq;
+using MailSenderLib.Services.Interfaces;
 
-namespace MailSenderLib.Services.Interfaces
+namespace MailSenderLib.Services.InMemory
 {
 
     public class RecipientsStoreInMemory:DataStoreInMemory<Recipient>,IRecipientsStore

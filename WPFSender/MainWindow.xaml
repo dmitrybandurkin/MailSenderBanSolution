@@ -31,7 +31,8 @@
                         </Grid.RowDefinitions>
                         <ToolBarTray>
                             <ToolBar Header="Отправитель">
-                                <ComboBox x:Name="LogBox" Width="200" Height="20" ItemsSource="{x:Static data:DataStorage.Senders}" SelectedIndex="0">
+                                <view:ToolBarView></view:ToolBarView>
+                                <!--<ComboBox x:Name="LogBox" Width="200" Height="20" ItemsSource="{x:Static data:DataStorage.Senders}" SelectedIndex="0">
                                     <ComboBox.ItemTemplate >
                                         <DataTemplate DataType="models:sender">
                                             <StackPanel Orientation="Vertical">
@@ -50,7 +51,8 @@
                                 <Button>
                                     <fa:ImageAwesome Height="12" Icon="Trash" Foreground="red" ToolTip="Удалить"></fa:ImageAwesome>
                                 </Button>
-                                <PasswordBox x:Name="PassBox" Width="150"></PasswordBox>
+                                <PasswordBox x:Name="PassBox" Width="150"></PasswordBox>-->
+                                
                             </ToolBar>
                             <ToolBar Header="Планировщик">
                                 <Button Click="OnPlanningClickButton">
@@ -58,7 +60,8 @@
                                 </Button>
                             </ToolBar>
                             <ToolBar Header="Сервера" Band="1">
-                                <ComboBox x:Name="ServerBox" Width="200" Height="20" ItemsSource="{x:Static data:DataStorage.Servers}" SelectedIndex="0">
+                                <view:ToolBarView></view:ToolBarView>
+                                <!--<ComboBox x:Name="ServerBox" Width="200" Height="20" ItemsSource="{x:Static data:DataStorage.Servers}" SelectedIndex="0">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate DataType="models:server">
                                             <StackPanel Orientation="Vertical">
@@ -76,7 +79,7 @@
                                 </Button>
                                 <Button>
                                     <fa:ImageAwesome Height="12" Icon="Trash" Foreground="Red" ToolTip="Удалить"></fa:ImageAwesome>
-                                </Button>
+                                </Button>-->
                             </ToolBar>
                             <ToolBar Header="Адресаты" Band="1">
                                 <Button>

@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using MailSenderLib;
 using MailSenderLib.Models;
 using MailSenderLib.Services;
 using MailSenderLib.Services.Interfaces;
@@ -14,19 +15,17 @@ namespace WPFSender.ViewModel
     public class MainWindowViewModel : ViewModelBase
     {
         private readonly IRecipientsManager recipientsManager;
-        private static string title;
-        private static ObservableCollection<Recipient> recipients;
+        //private readonly IServer;
+        private string title = "Рассыльщик почты";
+        private ObservableCollection<Recipient> recipients;
+        private ObservableCollection<Server> servers;
         private Recipient selectedRecipient;
+        private Server selectedServer;
 
         public string Title
         { 
             get => title;
             set => Set(ref title, value);
-        }
-
-        static MainWindowViewModel()
-        {
-            title = "Рассыльщик почты";
         }
 
         public ObservableCollection<Recipient> Recipients
@@ -40,6 +39,20 @@ namespace WPFSender.ViewModel
             get => selectedRecipient;
             set => Set(ref selectedRecipient, value);
         }
+
+        public ObservableCollection<Server> Servers
+        {
+            get => servers;
+            set => Set(ref servers, value);
+        }
+
+        public Server SelectedServer
+        {
+            get => selectedServer;
+            set => Set(ref selectedServer, value);
+        }
+
+
         public ICommand LoadRecipientDataCommand { get; }
         private bool CanLoadRecipientsDataCommandExecute() => true;
         private void OnLoadRecipientDataCommandExecuted()
@@ -69,7 +82,8 @@ namespace WPFSender.ViewModel
             LoadRecipientDataCommand = new RelayCommand(OnLoadRecipientDataCommandExecuted, CanLoadRecipientsDataCommandExecute);
             SaveRecipientChangesCommand = new RelayCommand<Recipient>(OnSaveRecipientChangesCommandExecuted, CanSaveRecipientChangesCommandExecute);
             DeleteRecipientDataCommand = new RelayCommand<Recipient>(OnDeleteRecipientDataCommand, CanDeleteRecipientDataCommand);
-            this.recipientsManager = recipentsManager;
+            recipientsManager = recipentsManager;
+            Servers = new ObservableCollection<Server>();
         }
         
 

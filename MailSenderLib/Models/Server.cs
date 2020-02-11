@@ -1,7 +1,7 @@
 ﻿using System;
 using MailSenderLib.Models.Base;
 
-namespace MailSenderLib
+namespace MailSenderLib.Models
 {
     public class Server:NamedEntity
     {

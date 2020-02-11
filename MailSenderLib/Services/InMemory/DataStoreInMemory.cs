@@ -1,9 +1,10 @@
 ﻿using MailSenderLib.Models.Base;
+using MailSenderLib.Services.Interfaces;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace MailSenderLib.Services.Interfaces
+namespace MailSenderLib.Services.InMemory
 {
     public abstract class DataStoreInMemory<T> : IDataStore<T> where T: BaseEntity
     {

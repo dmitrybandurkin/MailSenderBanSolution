@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="WPFSender.Views.ToolBarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:local="clr-namespace:WPFSender.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="25.926" Width="291">
+
+    <DockPanel>
+        
+        <ComboBox x:Name="LogBox" Width="200" Height="20" SelectedIndex="0">
+            <ComboBox.ItemTemplate>
+                <DataTemplate DataType="models:sender">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding Address}" FontStyle="Italic" Opacity="0.6"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
+        <UniformGrid DockPanel.Dock="Right" Rows="1" Margin="2,0">
+            <Button>
+                <fa:ImageAwesome Height="12" Icon="Plus" Foreground="Green" ToolTip="Добавить"></fa:ImageAwesome>
+            </Button>
+            <Button>
+                <fa:ImageAwesome Height="12" Icon="Edit" Foreground="Orange" ToolTip="Изменить"></fa:ImageAwesome>
+            </Button>
+            <Button>
+                <fa:ImageAwesome Height="12" Icon="Trash" Foreground="red" ToolTip="Удалить"></fa:ImageAwesome>
+            </Button>
+        </UniformGrid>
+        <!--<PasswordBox x:Name="PassBox" Width="150"></PasswordBox>-->
+    </DockPanel>
+
+</UserControl>

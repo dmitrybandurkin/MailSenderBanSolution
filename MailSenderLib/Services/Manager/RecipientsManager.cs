@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using MailSenderLib.Services.Interfaces;
 
-namespace MailSenderLib.Services
+namespace MailSenderLib.Services.Manager
 {
     public class RecipientsManager:IRecipientsManager
     {
@@ -17,26 +17,15 @@ namespace MailSenderLib.Services
         {
             return store.GetAll();
         }
-
-        public void Add(Recipient NewRecipient)
-        {
-
-        }
-
-        public void Edit(Recipient recipient)
-        {
-            store.Edit(recipient.Id, recipient);
-        }
-
+        public void Add(Recipient item) { }
+        public void Edit(Recipient item) { }
         public void SaveChanges()
         {
             store.SaveChanges();
         }
-
         public Recipient Remove(int id)
         {
             return store.Remove(id);
         }
-
     }
 }
