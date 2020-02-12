@@ -13,9 +13,7 @@ namespace MailSenderLib.Services.InMemory
 
         protected DataStoreInMemory(ObservableCollection<T> Items = null)
         {
-            System.Diagnostics.Debug.WriteLine("6");
             items = Items ?? new ObservableCollection<T>();
-            System.Diagnostics.Debug.WriteLine("7");
         }
 
         public IEnumerable<T> GetAll() => items;

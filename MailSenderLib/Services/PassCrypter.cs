@@ -6,18 +6,17 @@ namespace MailSenderLib.Services
 {
     public static class PassCrypter
     {
-        static readonly int K = 1;
-        public static string Encrypt(string pass)
+        public static string Encrypt(string pass, int key=1)
         {
             char[] charpass = pass.ToCharArray();
-            for (int i = 0; i < charpass.Length; i++) charpass[i] = (char)((int)charpass[i]+K);
+            for (int i = 0; i < charpass.Length; i++) charpass[i] = (char)((int)charpass[i]+ key);
             return new string(charpass);
         }
 
-        public static string Decrypt(string pass)
+        public static string Decrypt(string pass, int key=1)
         {
             char[] charpass = pass.ToCharArray();
-            for (int i = 0; i < charpass.Length; i++) charpass[i] = (char)((int)charpass[i] - K);
+            for (int i = 0; i < charpass.Length; i++) charpass[i] = (char)((int)charpass[i] - key);
             return new string(charpass);
         }
     }
