@@ -11,12 +11,12 @@
 
     <DockPanel>
         
-        <ComboBox x:Name="LogBox" Width="200" Height="20" SelectedIndex="0">
+        <ComboBox x:Name="LogBox" Width="200" Height="20" SelectedIndex="0" ItemsSource="{Binding Senders}" SelectedItem="{Binding SelectedSender}">
             <ComboBox.ItemTemplate>
                 <DataTemplate DataType="models:sender">
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="" FontWeight="Bold"></TextBlock>
-                        <TextBlock Text="" FontStyle="Italic" Opacity="0.6"></TextBlock>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding Address}" FontStyle="Italic" Opacity="0.6"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace MailSenderLib.Services.InMemory
 {
-    public class ServersStoreInMemory : DataStoreInMemory<Server>, IServerStore
+    public class ServersStoreInMemory : DataStoreInMemory<Server>, IServersStore
     {
         public ServersStoreInMemory() : base(DataStorage.Servers) 
         {

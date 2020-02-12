@@ -11,7 +11,7 @@
 
     <DockPanel>
 
-        <ComboBox x:Name="LogBox" Width="200" Height="20" SelectedIndex="0" ItemsSource="{Binding Servers}">
+        <ComboBox x:Name="LogBox" Width="200" Height="20" SelectedIndex="0" ItemsSource="{Binding Servers}" SelectedItem="{Binding SelectedServer}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">

@@ -1,29 +1,30 @@
 ﻿using MailSenderLib.Models;
-using System.Collections.Generic;
-using MailSenderLib.Services.Interfaces;
 using MailSenderLib.Services.Interfaces.IManager;
 using MailSenderLib.Services.Interfaces.IStore;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MailSenderLib.Services.Manager
 {
-    public class ServersManager : IServersManager
+    public class SendersManager : ISendersManager
     {
-        private IServersStore store;
-        public ServersManager(IServersStore Store)
+        private ISendersStore store;
+        public SendersManager(ISendersStore Store)
         {
             store = Store;
         }
-        public IEnumerable<Server> GetAll()
+        public IEnumerable<Sender> GetAll()
         {
             return store.GetAll();
         }
-        public void Add(Server item) { }
-        public void Edit(Server item) { }
+        public void Add(Sender item) { }
+        public void Edit(Sender item) { }
         public void SaveChanges()
         {
             store.SaveChanges();
         }
-        public Server Remove(int id)
+        public Sender Remove(int id)
         {
             return store.Remove(id);
         }

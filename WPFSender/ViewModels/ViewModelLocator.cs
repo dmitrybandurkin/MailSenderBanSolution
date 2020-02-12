@@ -23,7 +23,10 @@ namespace WPFSender.ViewModels
             services.Register<IRecipientsManager, RecipientsManager>();
             services.Register<IRecipientsStore, RecipientsStoreInMemory>();
             services.Register<IServersManager, ServersManager>();
-            services.Register<IServerStore, ServersStoreInMemory>();
+            services.Register<IServersStore, ServersStoreInMemory>();
+            services.Register<ISendersManager, SendersManager>();
+            services.Register<ISendersStore, SendersStoreInMemory>();
+
         }
 
         public MainWindowViewModel MainWindowModel => ServiceLocator.Current.GetInstance<MainWindowViewModel>();

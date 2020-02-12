@@ -1,7 +1,7 @@
 ﻿using MailSenderLib.Models;
 
 namespace MailSenderLib.Services.Interfaces.IStore
-{
-    public interface IServerStore: IDataStore<Server> { }
+{ 
+    public interface ISendersStore : IDataStore<Sender> { }
 
 }
