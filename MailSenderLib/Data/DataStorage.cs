@@ -29,8 +29,8 @@ namespace MailSenderLib.Data
 
             Recipients = new ObservableCollection<Recipient>()
             {
-                new Recipient(0, "Дмитрий 3","dmitrybandurkin@gmail.com"),
-                new Recipient(1, "Дмитрий 4","dmitryvb@mail.com")
+                new Recipient(1, "Дмитрий 3","dmitrybandurkin@gmail.com"),
+                new Recipient(2, "Дмитрий 4","dmitryvb@mail.com")
             };
         }
     }

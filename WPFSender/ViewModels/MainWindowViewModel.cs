@@ -75,6 +75,7 @@ namespace WPFSender.ViewModel
             set => Set(ref selectedSender, value);
         }
 
+        #region команды управления кнопок окна получателей
         public ICommand LoadRecipientDataCommand { get; }
         private bool CanLoadRecipientsDataCommandExecute() => true;
         private void OnLoadRecipientDataCommandExecuted()
@@ -97,13 +98,21 @@ namespace WPFSender.ViewModel
         {
             recipientsManager.Remove(recipient.Id);
             Recipients = new ObservableCollection<Recipient>(recipientsManager.GetAll()); //строка для теста
-        }
+        } 
+        #endregion
 
+        public ICommand SendMessageCommand { get; }
+        private bool CanSendMessageCommand() => true;
+        private void OnSendMessageCommandExecuted()
+        {
+
+        }
         public MainWindowViewModel(IRecipientsManager RecipientsManager, IServersManager ServersManager, ISendersManager SendersManager)
         {
             LoadRecipientDataCommand = new RelayCommand(OnLoadRecipientDataCommandExecuted, CanLoadRecipientsDataCommandExecute);
             SaveRecipientChangesCommand = new RelayCommand<Recipient>(OnSaveRecipientChangesCommandExecuted, CanSaveRecipientChangesCommandExecute);
             DeleteRecipientDataCommand = new RelayCommand<Recipient>(OnDeleteRecipientDataCommand, CanDeleteRecipientDataCommand);
+
             recipientsManager = RecipientsManager;
             serversManager = ServersManager;
             sendersManager = SendersManager;
