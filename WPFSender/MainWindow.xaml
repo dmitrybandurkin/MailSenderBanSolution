@@ -56,8 +56,8 @@
                         <GroupBox Header="Получатели писем" Grid.Row="1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*"></ColumnDefinition>
-                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="488.75"></ColumnDefinition>
+                                    <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <view:RecipientsView Grid.Column="0"></view:RecipientsView>
                                 <view:RecipientEditor Grid.Column="1"></view:RecipientEditor>
@@ -79,7 +79,7 @@
                                             <fa:ImageAwesome Height="12" Icon="Regular_Clock"></fa:ImageAwesome>
                                         </DockPanel>
                                     </Button>
-                                    <Button HorizontalContentAlignment="Stretch" Click="SendMailButton_Click">
+                                    <Button HorizontalContentAlignment="Stretch" Command="{Binding SendMessageCommand}">
                                         <DockPanel Margin="40,0">
                                             <TextBlock HorizontalAlignment="Center">Отправить</TextBlock>
                                             <fa:ImageAwesome Height="12" Icon="Solid_Atom"></fa:ImageAwesome>
@@ -109,19 +109,26 @@
                         <GroupBox Header="Список писем">
                             <DockPanel>
                                 <UniformGrid DockPanel.Dock="Bottom" Rows="1">
-                                    <Button>Добавить</Button>
+                                    <Button Command="{Binding CreateMailCommand}">Добавить</Button>
                                     <Button>Удалить</Button>
                                 </UniformGrid>
-                                <ListBox></ListBox>
+                                <ListBox ItemsSource="{Binding Mails}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Subject}"></TextBlock>
+                                            
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </DockPanel>
                         </GroupBox>
                         <GroupBox Header="Выбранное письмо" Grid.Column="1">
                             <DockPanel>
                                 <GroupBox Header="Тема письма" DockPanel.Dock="Top">
-                                    <TextBox x:Name="SubjectBox"></TextBox>
+                                    <TextBox x:Name="SubjectBox" Text="{Binding MailSubject}"></TextBox>
                                 </GroupBox>
                                 <GroupBox Header="Текст письма">
-                                    <TextBox x:Name="BodyMailBox" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
+                                    <TextBox x:Name="BodyMailBox" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding MailBody}"></TextBox>
                                 </GroupBox>
                             </DockPanel>
                         </GroupBox>

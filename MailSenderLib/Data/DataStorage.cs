@@ -12,6 +12,7 @@ namespace MailSenderLib.Data
         public static ObservableCollection<Sender> Senders;
         public static ObservableCollection<Server> Servers;
         public static ObservableCollection<Recipient> Recipients;
+        public static ObservableCollection<Mail> Mails;
 
         static DataStorage()
         {
@@ -31,6 +32,11 @@ namespace MailSenderLib.Data
             {
                 new Recipient(1, "Дмитрий 3","dmitrybandurkin@gmail.com"),
                 new Recipient(2, "Дмитрий 4","dmitryvb@mail.com")
+            };
+
+            Mails = new ObservableCollection<Mail>()
+            {
+            new Mail(){Id = 1, Body ="asdsad",Subject= "sdfdsfsd" }
             };
         }
     }

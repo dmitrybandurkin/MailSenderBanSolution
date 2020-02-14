@@ -35,45 +35,5 @@ namespace WPFSender
         {
             tabControl.SelectedIndex = 1;
         }
-
-        /// <summary>
-        /// Отправка письма
-        /// </summary>
-        private void SendMailButton_Click(object sender, RoutedEventArgs e)
-        {
-            ////if (SubjectBox.Text == "" || BodyMailBox.Text == "")
-            ////{
-            ////    StatusBox.Text = $"Заголовок письма или тело письма пустые";
-            ////    tabControl.SelectedIndex = 2;
-            ////    return;
-            ////}
-
-            ////var recipient = RecipientBox.SelectedItem as Recipient;
-            ////if (recipient == null)
-            ////{
-            ////    StatusBox.Text = $"Не выбран получатель";
-            ////    tabControl.SelectedIndex = 0;
-            ////    return;
-            ////}                                               
-            ////StatusBox.Text = recipient.Address;             
-                                                              
-
-            ////var senderAddress = LogBox.SelectedItem as Sender;
-            ////var server = ServerBox.SelectedItem as Server;
-
-            ////          //encrypt and decrypt must work with password from another window
-            ////SendService mailsender = new SendService(server.Login, PassCrypter.Decrypt(PassCrypter.Encrypt(PassBox.Password)), server.Port, server.Address);
-            
-            ////try
-            ////{
-            ////    mailsender.SendEMail(senderAddress.Address, recipient.Address, SubjectBox.Text, BodyMailBox.Text);
-            ////    StatusBox.Text = $"Письмо успешно отправлено";
-            ////}
-            ////catch (Exception ex)
-            ////{
-            ////    StatusBox.Text = $"{ ex.Message}";
-            ////}
-        }
-
     }
 }
