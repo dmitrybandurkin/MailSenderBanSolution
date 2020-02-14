@@ -12,8 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MailSenderLib;
+using MailSenderLib.Models;
+using MailSenderLib.Services;
 
-namespace MailSenderBan
+namespace WPFSender
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,10 +28,12 @@ namespace MailSenderBan
             InitializeComponent();
         }
 
-        private void SendEmailEvent(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Переключение на планировщик
+        /// </summary>
+        private void OnPlanningClickButton(object sender, RoutedEventArgs e)
         {
-            WPFMailSender msend = new WPFMailSender(LogBox.Text, PassBox.SecurePassword, TestSenderData.port, TestSenderData.host);
-            msend.SendEMail(FromBox.Text, ToBox.Text, SubjectBox.Text, MailBox.Text, StatusBox);
+            tabControl.SelectedIndex = 1;
         }
     }
 }
