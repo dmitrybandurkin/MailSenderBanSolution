@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using System.Threading.Tasks;
 
 namespace TestConsole
 {
@@ -18,12 +19,13 @@ namespace TestConsole
 
             MyThreadClass.NumF = int.Parse(Console.ReadLine());
             MyThreadClass.NumS = int.Parse(Console.ReadLine());
-            var thread_one = new Thread(MyThreadClass.FactorialCalculating);
-            var thread_two = new Thread(MyThreadClass.SumCalculating);
-            thread_one.Start();
-            thread_two.Start();
-            thread_one.Join();
-            thread_two.Join();
+            //var thread_one = new Thread(MyThreadClass.FactorialCalculating);
+            //var thread_two = new Thread(MyThreadClass.SumCalculating);
+            //thread_one.Start();
+            //thread_two.Start();
+            //thread_one.Join();
+            //thread_two.Join();
+            Parallel.Invoke(new ParallelOptions {MaxDegreeOfParallelism = 3},MyThreadClass.FactorialCalculating,MyThreadClass.SumCalculating, MyThreadClass.FactorialCalculating);
         }
     }
 
