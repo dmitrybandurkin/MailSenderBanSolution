@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MailSenderLib.Models;
+using System;
 using System.Collections.Generic;
 using System.Security;
 using System.Text;
@@ -7,6 +8,6 @@ namespace MailSenderLib.Services.Interfaces
 {
     public interface IMessageSender
     {
-        void SendEMail(string From, string To, string Subject, string Body, int Port, string Host, string Login, SecureString Password);
+        void SendEMail(Sender From, Recipient To, Server Server, Mail Mail, SecureString Password);
     }
 }

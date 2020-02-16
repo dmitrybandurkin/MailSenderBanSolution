@@ -155,7 +155,7 @@ namespace WPFSender.ViewModel
         private void OnSendMessageCommandExecuted()
         {
             if ((SelectedServer != null) && (SelectedRecipient != null) && (SelectedSender != null))
-                messageSenderManager.SendEMail(SelectedSender.Address, SelectedRecipient.Address, "Subject", "Body", SelectedServer.Port, SelectedServer.Address, SelectedServer.Login, Password);
+                messageSenderManager.SendEMail(SelectedSender, SelectedRecipient, SelectedServer, SelectedMail, Password);
         } 
         #endregion
         public MainWindowViewModel(
