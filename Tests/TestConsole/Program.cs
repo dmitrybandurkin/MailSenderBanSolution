@@ -7,12 +7,13 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
+using TestConsole.Matrix;
 
 namespace TestConsole
 {
     class Program
     {
-        const int Size = 1000;
+        
         static void Main(string[] args)
         {
             //небольшая развлекаловка с событиями
@@ -45,68 +46,13 @@ namespace TestConsole
 
         static void Lesson6()
         {
-            Random rnd = new Random();
-            int[,] MatrixA = new int[Size, Size];
-            int[,] MatrixB = new int[Size, Size];
-            int[,] ResultMatrixP = new int[Size, Size];
-            FillingMatrix(ref MatrixA);
-            FillingMatrix(ref MatrixB);
 
-            var ParallelTask = new Task<int[,]>(() => MultipleMatrix(MatrixA, MatrixB));
-            ParallelTask.Start();
+            //MatrixParallelMultiplication.ParallelMatrix(); //параллельное вычисление
 
-            //какая-то работа в основном потоке
-            for (int i = 0; i < 20; i++)
-            {
-                Thread.Sleep(500);
-                Console.WriteLine("Работа в основном потоке");
-            }
-
-            ResultMatrixP = ParallelTask.Result;
-            
+            MatrixAsyncMultiplication.AsyncMatrix();//асинхронный расчет
         }
 
-        static void FillingMatrix(ref int[,] matrix)
-        {
-            Random random = new Random();
-
-            for (int i = 0; i < Size; i++)
-            {
-                for (int j=0; j < Size; j++)
-                {
-                    matrix[i, j] = random.Next(0, 11);
-                }
-            }
-        }
-
-        static int[,] MultipleMatrix(int[,] matrixA, int[,] matrixB)
-        {
-            int[,] matrixC = new int[Size, Size];
-
-            Console.WriteLine($"Вычисления производятся в #{Task.CurrentId} задаче #{Thread.CurrentThread.ManagedThreadId} потока");
-
-            for (int i = 0; i < Size; i++)
-            {
-                for (int j = 0; j < Size ;j++)
-                {
-                    matrixC[i, j] = MultipleCell(i, j, matrixA, matrixB);
-                }
-            }
-
-            Console.WriteLine($"Вычисления закончены в #{Task.CurrentId} задаче #{Thread.CurrentThread.ManagedThreadId} потока");
-
-            return matrixC;
-        }
         
-        static int MultipleCell(int i, int j, int[,] matrixA, int[,] matrixB)
-        {
-            int msum=0;
-            for (int l = 0; l < Size; l++)
-            {
-                msum = msum + matrixA[i, l] * matrixB[l, j];
-            }
-            return msum;
-        }
 
         
     }
