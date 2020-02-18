@@ -18,7 +18,7 @@ namespace TestConsole.Matrix
         public static void AsyncMatrix()
         {
             MultipleMatrix(MatrixA, MatrixB);
-            //какая-то работа в основном потоке
+            //какая - то работа в основном потоке
             //for (int i = 0; i < 20; i++)
             //{
             //    Thread.Sleep(500);
@@ -29,13 +29,21 @@ namespace TestConsole.Matrix
 
         private static async void MultipleMatrix(int[,] matrixA, int[,] matrixB) // перемножение матриц
         {
+            List<Task> tasks = new List<Task>();
             for (int i = 0; i < Size; i++)
             {
                 for (int j = 0; j < Size; j++)
                 {
-                    //var results = Task.Factory.StartNew(() => MultipleCell(i, j, matrixA, matrixB)); // хотел создать ряд асинхронных процессов для долгих единичных рассчетов
+                    tasks.Add(new Task(() => MultipleCell(i, j, matrixA, matrixB))); // хотел создать ряд асинхронных процессов для долгих единичных рассчетов
+                    Console.WriteLine(j);
                 }
             }
+
+            foreach (var t in tasks)
+            {
+                t.Start();
+            }
+            await Task.WhenAll(tasks);
         }
 
         private static void MultipleCell(int i, int j, int[,] matrixA, int[,] matrixB) //единичное вычисление ячейки матрицы
