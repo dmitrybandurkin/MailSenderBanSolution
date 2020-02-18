@@ -10,6 +10,7 @@ namespace TestConsole.Matrix
     {
         private static int[,] ResultMatrixP;
 
+        public static int[,] ResultParralel { get => ResultMatrixP; }
         static MatrixParallelMultiplication()
         {
             ResultMatrixP = new int[Size,Size];
@@ -21,11 +22,11 @@ namespace TestConsole.Matrix
             ParallelTask.Start();
 
             //какая-то работа в основном потоке
-            for (int i = 0; i < 20; i++)
-            {
-                Thread.Sleep(500);
-                Console.WriteLine("Работа в основном потоке");
-            }
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    Thread.Sleep(500);
+            //    Console.WriteLine("Работа в основном потоке");
+            //}
 
         }
 

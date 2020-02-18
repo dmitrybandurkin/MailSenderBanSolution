@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using TestConsole.Matrix;
+using  System.Linq;
 
 namespace TestConsole
 {
@@ -47,14 +48,12 @@ namespace TestConsole
         static void Lesson6()
         {
 
-            //MatrixParallelMultiplication.ParallelMatrix(); //параллельное вычисление
+            MatrixParallelMultiplication.ParallelMatrix(); //параллельное вычисление
 
             MatrixAsyncMultiplication.AsyncMatrix();//асинхронный расчет
+
         }
 
-        
-
-        
     }
 
 }

@@ -6,7 +6,7 @@ namespace TestConsole.Matrix
 {
     abstract class MatrixBase
     {
-        protected const int Size = 2;
+        protected const int Size = 1000;
         protected static int[,] MatrixA;
         protected static int[,] MatrixB;
         static MatrixBase() //инициализация матриц

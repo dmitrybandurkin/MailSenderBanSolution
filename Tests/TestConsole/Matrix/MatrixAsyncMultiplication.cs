@@ -15,6 +15,8 @@ namespace TestConsole.Matrix
             ResultMatrixAsync = new int[Size, Size];
         }
 
+        public static int[,] ResultAsync { get => ResultMatrixAsync; }
+
         public static void AsyncMatrix()
         {
             MultipleMatrix(MatrixA, MatrixB);
@@ -32,30 +34,29 @@ namespace TestConsole.Matrix
             List<Task> tasks = new List<Task>();
             for (int i = 0; i < Size; i++)
             {
+                int i0;
+                i0 = i;
                 for (int j = 0; j < Size; j++)
                 {
-                    tasks.Add(new Task(() => MultipleCell(i, j, matrixA, matrixB))); // хотел создать ряд асинхронных процессов для долгих единичных рассчетов
-                    Console.WriteLine(j);
+                    int j0;
+                    j0 = j;
+                    tasks.Add(Task.Run(() => MultipleCell(i0, j0, matrixA, matrixB))); // хотел создать ряд асинхронных процессов для долгих единичных рассчетов
                 }
             }
 
-            foreach (var t in tasks)
-            {
-                t.Start();
-            }
             await Task.WhenAll(tasks);
         }
 
-        private static void MultipleCell(int i, int j, int[,] matrixA, int[,] matrixB) //единичное вычисление ячейки матрицы
+        private static async void MultipleCell(int i, int j, int[,] matrixA, int[,] matrixB) //единичное вычисление ячейки матрицы
         {
-            Console.WriteLine($"Начат рассчет в потоке {Thread.CurrentThread.ManagedThreadId} задачи {Task.CurrentId}");
+            //Console.WriteLine($"Начат рассчет в потоке {Thread.CurrentThread.ManagedThreadId} задачи {Task.CurrentId}");
             int msum = 0;
             for (int l = 0; l < Size; l++)
             {
                 msum = msum + matrixA[i, l] * matrixB[l, j];
             }
 
-            Task.Delay(1000); // имитация долгой работы
+            //await Task.Delay(1000); // имитация долгой работы
             ResultMatrixAsync[i,j] = msum;
         }
     }
