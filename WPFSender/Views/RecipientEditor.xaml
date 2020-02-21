@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="WPFSender.Views.RecipientEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFSender.Views"
+             xmlns:validation="clr-namespace:WPFSender.Infrastructure.ValidationRules"
+             xmlns:fa="http://schemas.fontawesome.com/icons/"
+             mc:Ignorable="d" 
+             DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
+             d:DesignHeight="112.026" d:DesignWidth="220.513">
+    <Grid Margin="5,5" Validation.Error="OnDatavalidationError">
+        <Grid.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="3,5,0,5"></Setter>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Id:"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Name:"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Address:"></TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="False" Text="{Binding SelectedRecipient.Id, NotifyOnValidationError=True}"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedRecipient.Name, NotifyOnValidationError=True, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="SelectedRecipient.Address" NotifyOnValidationError="True">
+                    <Binding.ValidationRules>
+                        <validation:RegExValidation Pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"
+                                                    ErrorMessage="Неверный формат адреса электронной почты"></validation:RegExValidation>
+                        <ExceptionValidationRule></ExceptionValidationRule>
+                        <DataErrorValidationRule></DataErrorValidationRule>
+                        <NotifyDataErrorValidationRule></NotifyDataErrorValidationRule>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <UniformGrid Rows="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Center"
+                     Margin="0,10">
+            <Button Margin="10,0" Padding="10,5" Width="50" Command="{Binding SaveRecipientChangesCommand}" CommandParameter="{Binding SelectedRecipient}">
+                <fa:ImageAwesome Height="12" Icon="Solid_Save" Foreground="Green"></fa:ImageAwesome>
+            </Button>
+            <Button Margin="10,0">
+                <fa:ImageAwesome Height="12" Icon="Regular_PlusSquare" Foreground="Green"></fa:ImageAwesome>
+            </Button>
+            <Button Margin="10,0" Command="{Binding DeleteRecipientDataCommand}" CommandParameter="{Binding SelectedRecipient}">
+                <fa:ImageAwesome Height="12" Icon="Solid_Trash"  Foreground="red"></fa:ImageAwesome>
+            </Button>
+        </UniformGrid>
+    </Grid>
+</UserControl>
